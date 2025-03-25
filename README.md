@@ -95,3 +95,16 @@ In this tutorial, we used lazy_static external library to define Vec and DashMap
 In Java, it's easy to change the value of a static variable using static methods. But Rust is much stricter to keep your program safe, especially when using multiple threads. In Rust, static variables are shared by all threads, so if two threads try to change them at the same time, it can cause bugs or unexpected behavior. To prevent this, Rust forces you to use safe types like Mutex, RwLock, or DashMap to protect shared data. We use the lazy_static crate to help us set up complex static variables like a Vec or DashMap, and then wrap them with these thread-safe types so they can be used safely across the program. Rust does this to avoid errors, even if it means writing a bit more code — it chooses safety over convenience.
 
 #### Reflection Subscriber-2
+
+Have you explored things outside of the steps in the tutorial, for example: src/lib.rs? If not, explain why you did not do so. If yes, explain things that you have learned from those other parts of code.
+
+Yes, I explored src/lib.rs and other parts of the code outside the main tutorial steps. From this, I learned how Rust projects are structured and how lib.rs is used to define public modules and make functions or structs accessible across different files. It helped me understand how to organize larger Rust applications and how everything connects behind the scenes. It also gave me a better idea of how modular Rust can be and how we can reuse code more easily when it's properly structured.
+
+
+Since you have completed the tutorial by now and have tried to test your notification system by spawning multiple instances of Receiver, explain how Observer pattern eases you to plug in more subscribers. How about spawning more than one instance of Main app, will it still be easy enough to add to the system?
+
+The Observer pattern made it very easy to add more Receiver instances (subscribers). I didn't have to change the core logic—just register a new subscriber, and it automatically receives notifications when a product is created or deleted. This shows how flexible and scalable the pattern is. However, if we want to run multiple instances of the Main app itself (not just multiple receivers), it becomes more complex. We would need to manage shared state across processes or machines, and make sure all subscribers are properly registered and synchronized. That would require additional work like using a shared database, networked message queue, or a central registry system.
+
+Have you tried to make your own Tests, or enhance documentation on your Postman collection? If you have tried those features, tell us whether it is useful for your work (it can be your tutorial work or your Group Project).
+
+Yes, I tried adding tests and improving the documentation in my Postman collection. Writing tests for API responses helped me quickly verify that everything was working as expected without checking manually each time. It also helped catch bugs early. Improving the documentation made it easier for my team to understand what each endpoint does, how to use them, and what inputs/outputs to expect. These features were very helpful not only for the tutorial project, but also for making our group project more organized and easier to collaborate on.
